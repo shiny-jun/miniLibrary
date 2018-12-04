@@ -2,7 +2,7 @@
   <div class="container">
     <div class="userInfo">
       <img :src="userInfo.avatarUrl">
-      <button open-type="getUserInfo" @getuserinfo="login" hover-class="none">{{userInfo.nickName}}</button>
+      <button open-type="getUserInfo" bindgetuserinfo="login" hover-class="none">{{userInfo.nickName}}</button>
     </div>
     <yearProgress></yearProgress>
     <button v-if="userInfo.openId" @click="scanBook" class="btn">添加图书</button>
