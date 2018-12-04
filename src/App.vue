@@ -1,25 +1,7 @@
 <script>
-import { get, showSuccess } from "./util";
-import qcloud from "wafer2-client-sdk";
-import config from "./config";
+
 export default {
   async created() {
-    let user = wx.getStorageSync("userinfo");
-    if (!user) {
-      qcloud.setLoginUrl(config.loginUrl);
-      qcloud.login({
-        success: function(userinfo) {
-          console.log("登录成功", userinfo);
-          showSuccess("登录成功");
-          // wx.setStorageSync("userinfo", userinfo)
-        },
-        fail: function(err) {
-          console.log("登录失败", err);
-        }
-      });
-    } else {
-
-    }
 
     // const res = await get('/weapp/demo')
     // console.log(123,res)
@@ -34,5 +16,21 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+// 全局样式
+.btn{
+    color: white;
+    background: #ea5a49;
+    margin-bottom: 20rpx;
+    padding-left:30rpx;
+     border-radius: 4rpx;
+     font-size: 32rpx;
+     line-height: 80rpx;
+     height: 80rpx;
+     width: 100%;
+     &:active{
+         background: #fb5a49;
+     }
+}
 </style>
+
