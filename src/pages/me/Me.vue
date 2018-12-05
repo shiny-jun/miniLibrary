@@ -2,16 +2,16 @@
   <div class="container">
     <div class="userInfo">
       <img :src="userInfo.avatarUrl">
-      <button open-type="getUserInfo" bindgetuserinfo="login" hover-class="none">{{userInfo.nickName}}</button>
+      <button open-type="getUserInfo" @getuserinfo="login" hover-class="none">{{userInfo.nickName}}</button>
     </div>
     <yearProgress></yearProgress>
-    <button v-if="userInfo.openId" @click="scanBook" class="btn">添加图书</button>
+    <button @click="scanBook" class="btn">添加图书</button>
   </div>
 </template>
 <script>
 import qcloud from "wafer2-client-sdk";
 import config from "@/config";
-import { get, showSuccess } from "@/util";
+import { post, showSuccess } from "@/util";
 import yearProgress from "@/components/yearProgress";
 export default {
   components: { yearProgress },
@@ -24,11 +24,24 @@ export default {
     };
   },
   methods: {
+    async addBook(isbn) {
+        const res = await post("/weapp/addbook", {
+          isbn,
+          openId: this.userInfo.openId
+        });
+        if(res.code === 0 && res.data.title){
+            showSuccess('添加成功',`${res.data.title}添加成功`)
+        }
+    },
     scanBook() {
       // 允许从相机和相册扫码
+      let _this = this
       wx.scanCode({
         success(res) {
-          console.log(res);
+          if (res.result) {
+            _this.addBook(res.result);
+          }
+        //   console.log(res);
         }
       });
     },
