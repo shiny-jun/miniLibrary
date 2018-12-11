@@ -20,6 +20,9 @@ const {
 router.get('/demo', controllers.demo)
 // addbook接口
 router.post('/addbook', controllers.addbook)
+// 获取图书列表接口
+router.get('/booklist', controllers.booklist)
+
 // 登录接口
 router.get('/login', authorizationMiddleware, controllers.login)
 // 用户信息接口（可以用来验证登录态）

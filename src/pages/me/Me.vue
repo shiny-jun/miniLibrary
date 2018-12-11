@@ -11,8 +11,9 @@
 <script>
 import qcloud from "wafer2-client-sdk";
 import config from "@/config";
-import { post, showSuccess } from "@/util";
+import { post, showSuccess, showModal } from "@/util";
 import yearProgress from "@/components/yearProgress";
+import { constants } from 'zlib';
 export default {
   components: { yearProgress },
   data() {
@@ -25,13 +26,15 @@ export default {
   },
   methods: {
     async addBook(isbn) {
+        console.log(this.userInfo.openId)
         const res = await post("/weapp/addbook", {
           isbn,
-          openId: this.userInfo.openId
+          openid: this.userInfo.openId
         });
-        if(res.code === 0 && res.data.title){
-            showSuccess('添加成功',`${res.data.title}添加成功`)
-        }
+        showModal('添加成功',`${res.title}添加成功`)
+        // if(res.code === 0 && res.data.title){
+        //     showSuccess('添加成功',`${res.data.title}添加成功`)
+        // }
     },
     scanBook() {
       // 允许从相机和相册扫码

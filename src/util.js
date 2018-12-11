@@ -2,6 +2,7 @@
 import config from './config'
 
 function request(url, method, data) {
+    console.log(url)
   return new Promise((reslove, reject) => {
     wx.request({
       data: data,
@@ -11,6 +12,7 @@ function request(url, method, data) {
         if (res.data.code == 0) {
           reslove(res.data.data)
         } else {
+            showModal('失败',res.data.data.msg)
           reject(res.data)
         }
       }
@@ -27,7 +29,7 @@ export function post(url, data) {
 }
 
 
-
+// 吐司封装
 export function showSuccess(text) {
   wx.showToast({
     title: text,
@@ -40,6 +42,15 @@ export function showSuccess(text) {
     //   }
     // }
   })
+}
+
+// 弹窗封装
+export function showModal(title,content){
+    wx.showModal({
+        title,
+        content,
+        showCancel:false
+    })
 }
 
 export function login(userInfo, callback, reset) {

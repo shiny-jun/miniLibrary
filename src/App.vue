@@ -17,6 +17,9 @@ export default {
 </script>
 
 <style lang="scss">
+.text-primary{
+    color: #ea5a49;
+}
 // 全局样式
 .btn{
     color: white;
