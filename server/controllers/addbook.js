@@ -14,7 +14,11 @@ module.exports = async (ctx) => {
     const bookinfo = await getJSON(url)
     const rate = bookinfo.rating.average
     const {title, image, alt, publisher, summary, price} = bookinfo
-    console.log(bookinfo)
+    const tags = bookinfo.tags.map(v => {
+        return `${v.title} ${v.count}`
+    }).join(',')
+    const author = bookinfo.author.join(',')
+    console.log({ rate,title, image, alt, publisher, summary, price, tags, author})
   }
 }
 
