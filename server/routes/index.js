@@ -22,6 +22,8 @@ router.get('/demo', controllers.demo)
 router.post('/addbook', controllers.addbook)
 // 获取图书列表接口
 router.get('/booklist', controllers.booklist)
+// 获取图书详情接口
+router.get('/bookdetail', controllers.bookdetail)
 
 // 登录接口
 router.get('/login', authorizationMiddleware, controllers.login)
