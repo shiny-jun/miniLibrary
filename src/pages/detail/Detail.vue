@@ -11,6 +11,7 @@ export default {
     },
     mounted(){
         this.bookid = this.$root.$mp.query.id
+        this.getDetail()
     },
     methods:{
         async getDetail(){

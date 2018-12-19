@@ -39,10 +39,14 @@ export default {
         this.books = this.books.concat(books.list);
       }
       wx.hideNavigationBarLoading();
+    },
+    async getTop(){
+
     }
   },
   onPullDownRefresh() {
     this.getList(true);
+    this.getTop()
   },
   onReachBottom() {
     if (!this.more) {
@@ -53,6 +57,7 @@ export default {
   },
   mounted() {
     this.getList(true);
+    this.getTop()
   }
 };
 </script>
