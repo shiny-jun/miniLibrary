@@ -14,7 +14,7 @@
             <div class="left text-primary">{{book.title}}</div>
           </div>
           <div class="row">
-            <div class="right">浏览量：</div>
+            <div class="right text-primary">浏览量：{{book.count}}</div>
             <div class="left">{{book.author}}</div>
           </div>
           <div class="row">

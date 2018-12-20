@@ -3,9 +3,10 @@ const {
 } = require('../qcloud')
 module.exports = async (ctx) => {
   const {
-    page, size
+    page,
+    size
   } = ctx.request.query
-//   const size = 10
+  //   const size = 10
   const books = await mysql('books')
     .select('books.*', 'csessioninfo.user_info')
     .join('csessioninfo', 'books.openid', 'csessioninfo.open_id')
@@ -13,6 +14,9 @@ module.exports = async (ctx) => {
     .offset(Number(page) * size)
     .orderBy('books.id', 'desc')
   // .orderBy('id','desc')
+  books.forEach(item => {
+    item.count = parseInt(item.count)
+  })
   ctx.state.data = {
     list: books.map(v => {
       const info = JSON.parse(v.user_info)
