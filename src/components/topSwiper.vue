@@ -11,7 +11,12 @@
 </template>
 <script>
 export default {
-    props:['tops']
+    props:['tops'],
+    computed:{
+        imgUrls(){
+            // 或用chunk函数
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
