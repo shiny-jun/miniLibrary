@@ -1,7 +1,7 @@
 <template>
   <div>
-      <topSwiper :tops="tops"></topSwiper>
-    <card v-for="book in books" :key="book.id" :book="book"></card>
+      <topSwiper :tops="tops" @bookDetail="bookDetail"></topSwiper>
+    <card v-for="book in books" :key="book.id" :book="book" @bookDetail="bookDetail"></card>
     <p class="text-footer" v-if="!more">没有更多数据</p>
   </div>
 </template>
@@ -18,7 +18,8 @@ export default {
       books: [],
       page: 0,
       more: true,
-      size:10
+      size:10,
+      tops:[]
     };
   },
   methods: {
@@ -45,6 +46,9 @@ export default {
     async getTop(){
         const tops = await get('/weapp/booktop')
         this.tops = tops.list
+    },
+    bookDetail(book){ // 图书详情
+        wx.navigateTo({ url: '/pages/detail/main?id='+book.id  });
     }
   },
   onPullDownRefresh() {

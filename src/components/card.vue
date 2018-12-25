@@ -1,8 +1,8 @@
 <template>
-  <a :href="detailUrl">
-    <div>
+  <!-- <a :href="detailUrl"> -->
+    <div @click="bookDetail">
       <div class="book-card">
-        <div class="thumb">
+        <div class="thumb" @click.stop='preview'>
           <img :src="book.image" class="image" mode="aspectFit">
         </div>
         <div class="detail">
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-  </a>
+  <!-- </a> -->
 </template>
 
 <script>
@@ -34,11 +34,22 @@ export default {
     rate
   },
   props: ["book"],
-  computed: {
-    detailUrl() {
-        return '/pages/detail/main?id='+this.book.id 
-    }
-  }
+//   computed: {
+//     detailUrl() {
+//         return '/pages/detail/main?id='+this.book.id 
+//     }
+//   },
+  methods: {
+      bookDetail(){
+        this.$emit('bookDetail',this.book)
+      },
+      preview(){
+          wx.previewImage({
+              current:this.book.image,
+            urls: [this.book.image] //需要预览的图片链接列表,
+          });
+      }
+  },
 };
 </script>
 
