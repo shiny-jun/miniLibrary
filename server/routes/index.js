@@ -26,6 +26,8 @@ router.get('/booklist', controllers.booklist)
 router.get('/bookdetail', controllers.bookdetail)
 // 获取图书排名靠前的书籍
 router.get('/booktop', controllers.booktop)
+// 获取评论
+router.get('/commentlist', controllers.commentlist)
 // 增加评论
 router.post('/addcomment', controllers.addcomment)
 

@@ -53,18 +53,32 @@ export default {
       const _this = this;
       if (!user) {
         qcloud.setLoginUrl(config.loginUrl);
-        qcloud.request({
-          url: config.userUrl,
-          login: true,
-          success(userRes) {
-            showSuccess("登录成功");
-            wx.setStorageSync("userinfo", userRes.data.data);
-            _this.userInfo = userRes.data.data;
-          },
-          fail: function(err) {
-            console.log("登录失败", err);
+        qcloud.login({
+          success: function (userinfo) {
+            qcloud.request({
+              url: config.userUrl,
+              login: true,
+              success (userRes) {
+                showSuccess('登录成功')
+                wx.setStorageSync('userinfo', userRes.data.data)
+                _this.userinfo = userRes.data.data
+              }
+            })
           }
-        });
+
+        })
+        // qcloud.request({
+        //   url: config.userUrl,
+        //   login: true,
+        //   success(userRes) {
+        //     showSuccess("登录成功");
+        //     wx.setStorageSync("userinfo", userRes.data.data);
+        //     _this.userInfo = userRes.data.data;
+        //   },
+        //   fail: function(err) {
+        //     console.log("登录失败", err);
+        //   }
+        // });
       }
     }
   },

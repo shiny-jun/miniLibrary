@@ -22,6 +22,14 @@ export default {
     font-size: 12px;
     margin-bottom: 5px;
 }
+.page-title{
+    padding-left: 40rx;
+    background: #eee;
+    line-height: 80rpx;
+}
+.right{
+    float: right;
+}
 .text-primary{
     color: #ea5a49;
 }
