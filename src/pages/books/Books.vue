@@ -1,6 +1,6 @@
 <template>
   <div>
-      <topSwiper :tops="tops" @bookDetail="bookDetail"></topSwiper>
+    <topSwiper :tops="tops" @bookDetail="bookDetail"></topSwiper>
     <card v-for="book in books" :key="book.id" :book="book" @bookDetail="bookDetail"></card>
     <p class="text-footer" v-if="!more">没有更多数据</p>
   </div>

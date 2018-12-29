@@ -3,7 +3,8 @@
     "pages/books/main",
     "pages/me/main",
     "pages/comments/main",
-    "pages/detail/main"
+    "pages/detail/main",
+    "pages/mybook/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

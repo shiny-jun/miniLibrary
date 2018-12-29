@@ -28,6 +28,8 @@ router.get('/bookdetail', controllers.bookdetail)
 router.get('/booktop', controllers.booktop)
 // 获取评论
 router.get('/commentlist', controllers.commentlist)
+// 获取我的评论
+router.get('/commentuser', controllers.commentlist)
 // 增加评论
 router.post('/addcomment', controllers.addcomment)
 

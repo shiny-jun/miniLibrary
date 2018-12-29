@@ -6,6 +6,7 @@
     </div>
     <yearProgress></yearProgress>
     <button @click="scanBook" class="btn">添加图书</button>
+    <button @click="myBook" v-if="userInfo.openId" class="btn">我的图书</button>
   </div>
 </template>
 <script>
@@ -80,6 +81,20 @@ export default {
         //   }
         // });
       }
+    },
+    myBook(){
+      wx.navigateTo({
+        url: '/pages/mybook/main',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
     }
   },
   onShow() {

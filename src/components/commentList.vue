@@ -1,7 +1,7 @@
 <template>
   <div class="comment-list">
-    <div class="page-title">我的评论</div>
-    <div v-for="(comment, index) in comments" :key="index" class="comment">
+    <div class="page-title">评论</div>
+    <div v-for="(comment, index) in comments" :key="index" class="comment" @click="handleClick(comment)">
       <div class="user">
         <div class="right">
           {{comment.location||"未知地点"}}
@@ -19,7 +19,25 @@
 </template>
 <script>
 export default {
-  props: ["comments"]
+  props: ["comments",'type'],
+  methods: {
+    handleClick(item){
+      if(this.type === 'user'){
+        wx.navigateTo({
+          url: '/pages/detail/main?id='+item.bookid,
+          success: function(res){
+            // success
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
+      }
+    }
+  },
 };
 </script>
 <style lang="scss" scoped>
