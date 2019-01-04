@@ -30,7 +30,7 @@ export default {
       //   start:0,
       //   count:25
       // });
-      let url = "http://api.douban.com/v2/movie/top250";
+      let url = "http://t.yushu.im/v2/movie/top250";// 把豆瓣官方的api.douban.com改为t.yushu.im
             wx.request({
               url, //开发者服务器接口地址",
               method:'get',
