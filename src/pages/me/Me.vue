@@ -7,6 +7,7 @@
     <yearProgress></yearProgress>
     <button @click="scanBook" class="btn">添加图书</button>
     <button @click="myBook" v-if="userInfo.openId" class="btn">我的图书</button>
+    <button @click="myComment" v-if="userInfo.openId" class="btn">我的评论</button>
   </div>
 </template>
 <script>
@@ -85,15 +86,11 @@ export default {
     myBook(){
       wx.navigateTo({
         url: '/pages/mybook/main',
-        success: function(res){
-          // success
-        },
-        fail: function() {
-          // fail
-        },
-        complete: function() {
-          // complete
-        }
+      })
+    },
+    myComment(){
+      wx.navigateTo({
+        url: '/pages/comments/main',
       })
     }
   },

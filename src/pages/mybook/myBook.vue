@@ -26,13 +26,16 @@ export default {
       this.getBooks();
     },
     async getBooks() {
-      const comments = await get("/weapp/booklist", {
+      const books = await get("/weapp/booklist", {
         page: this.page,
         size: this.size,
         openid: this.userinfo.openId
       });
       this.books = books.list;
       wx.hideNavigationBarLoading();
+    },
+    bookDetail(book){ // 图书详情
+        wx.navigateTo({ url: '/pages/detail/main?id='+book.id  });
     }
   },
   // 下拉刷新

@@ -8,6 +8,9 @@ function request(url, method, data) {
       data: data,
       method: method,
       url: config.host + url,
+      header:{
+        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      },
       success: (res) => {
         if (res.data.code == 0) {
           reslove(res.data.data)

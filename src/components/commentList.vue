@@ -10,9 +10,10 @@
         </div>
         <div class="inline">
           <img :src="comment.image" mode="aspectFit" class="avatar">
-          {{comment.title}}
+          {{comment.nickName}}
         </div>
       </div>
+      <div class="right text-primary content">{{comment.title}}</div>
       <div class="content">{{comment.comment}}</div>
     </div>
   </div>
