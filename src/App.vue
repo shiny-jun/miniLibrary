@@ -30,6 +30,9 @@ export default {
 .right{
     float: right;
 }
+.bottom{
+    float: bottom;
+}
 .text-primary{
     color: #ea5a49;
 }

@@ -1,4 +1,5 @@
 {
     "navigationBarTitleText": "电影",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": true,
+    "onReachBottom":true
 }
