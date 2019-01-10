@@ -1,7 +1,9 @@
 <template>
   <div>
-    <card v-for="book in books" :key="book.id" :book="book" @bookDetail="bookDetail"></card>
-    <div v-if="!books.length">暂时还未添加图书</div>
+    <div v-if="books.length">
+      <card v-for="book in books" :key="book.id" :book="book" @bookDetail="bookDetail"></card>
+    </div>
+    <div v-else>暂时还未添加图书</div>
   </div>
 </template>
 <script>
@@ -34,8 +36,9 @@ export default {
       this.books = books.list;
       wx.hideNavigationBarLoading();
     },
-    bookDetail(book){ // 图书详情
-        wx.navigateTo({ url: '/pages/detail/main?id='+book.id  });
+    bookDetail(book) {
+      // 图书详情
+      wx.navigateTo({ url: "/pages/detail/main?id=" + book.id });
     }
   },
   // 下拉刷新

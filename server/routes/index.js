@@ -32,6 +32,12 @@ router.get('/commentlist', controllers.commentlist)
 router.get('/commentuser', controllers.commentlist)
 // 增加评论
 router.post('/addcomment', controllers.addcomment)
+// 豆瓣搜索接口
+router.get('/searchmovie', controllers.searchmovie)
+// 豆瓣高分250接口
+router.get('/topmovie', controllers.topmovie)
+// 豆瓣电影详情
+router.get('/moviedetail', controllers.moviedetail)
 
 // 登录接口
 router.get('/login', authorizationMiddleware, controllers.login)

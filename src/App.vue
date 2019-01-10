@@ -30,16 +30,13 @@ export default {
 .right{
     float: right;
 }
-.bottom{
-    float: bottom;
-}
 .text-primary{
-    color: #ea5a49;
+    color: #EA5149;
 }
 // 全局样式
 .btn{
     color: white;
-    background: #ea5a49;
+    background: #EA5149;
     margin-bottom: 20rpx;
     padding-left:30rpx;
      border-radius: 4rpx;
@@ -48,7 +45,7 @@ export default {
      height: 80rpx;
      width: 100%;
      &:active{
-         background: #fb5a49;
+         background: #EA5149;
      }
 }
 </style>

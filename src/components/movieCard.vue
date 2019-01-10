@@ -25,7 +25,7 @@ export default {
   //   },
   methods: {
     moiveDetail() {
-      this.$emit("moiveDetail", this.topMovie);
+      wx.navigateTo({ url: '/pages/movieDetail/main?id='+ this.topMovie.id });
     },
     preview() {
       wx.previewImage({
@@ -49,6 +49,8 @@ export default {
   }
   .poster {
     height: 300rpx;
+     border-radius: 10rpx;
+     overflow: hidden;
     img {
       width: 100%;
       height: 100%;
@@ -59,8 +61,8 @@ export default {
   }
   .right-bottom{
       position: absolute;
-      bottom: 10rpx;
-      right:20rpx;
+      bottom: 16rpx;
+      left:0rpx;
   }
 }
 </style>

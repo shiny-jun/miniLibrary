@@ -1,11 +1,12 @@
 {
   "pages": [
-    "pages/books/main",
+    "pages/movie/main","pages/books/main",
     "pages/me/main",
     "pages/comments/main",
     "pages/detail/main",
     "pages/mybook/main",
-    "pages/movie/main"
+    "pages/movieDetail/main",
+    "pages/movieSearch/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

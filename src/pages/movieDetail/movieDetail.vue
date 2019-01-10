@@ -1,6 +1,6 @@
 <template>
   <div>
-    <book-info :info="info"></book-info>
+    <movie-info :info="info"></movie-info>
     <commentList :comments="comments"></commentList>
     <div class="comment" v-if="showAdd">
       <textarea v-model="comment" class="textarea" :maxlength="100" placeholder="请输入图书短评"></textarea>
@@ -20,16 +20,16 @@
 </template>
 <script>
 import { get, post, showModal, showSuccess } from "@/util";
-import bookInfo from "@/components/bookInfo";
+import movieInfo from "@/components/movieInfo";
 import commentList from "@/components/commentList";
 export default {
   components: {
-    bookInfo,
+    movieInfo,
     commentList
   },
   data() {
     return {
-      bookid: "",
+      movieid: "",
       userinfo: {},
       info: {},
       comment: "",
@@ -55,7 +55,7 @@ export default {
     }
   },
   mounted() {
-    this.bookid = this.$root.$mp.query.id;
+    this.movieid = this.$root.$mp.query.id;
     this.getDetail();
     this.getComments();
     const userinfo = wx.getStorageSync("userinfo");
@@ -65,11 +65,13 @@ export default {
   },
   methods: {
     async getDetail() {
-      const info = await get("/weapp/bookdetail", { id: this.bookid });
+      const info = await get("/weapp/moviedetail", { id: this.movieid });
+      console.log(info)
       wx.setNavigationBarTitle({
-        title: info.title
+        title: info.movie.title
       });
-      this.info = info;
+      this.info = info.movie;
+      console.log(this.info)      
     },
     getGeo(e) {
       // qG4loFFdoTinNKFLfT8YcTL7fvF7szUG
@@ -135,7 +137,7 @@ export default {
       }
       const data = {
         openid: this.userinfo.openId,
-        bookid: this.bookid,
+        movieid: this.movieid,
         comment: this.comment,
         phone: this.phone,
         location: this.location
@@ -154,7 +156,7 @@ export default {
       const comments = await get("/weapp/commentlist", {
         page: this.page,
         size: this.size,
-        bookid: this.bookid
+        movieid: this.movieid
       });
       this.comments = comments.list || [];
     }
