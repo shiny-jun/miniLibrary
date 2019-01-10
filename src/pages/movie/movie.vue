@@ -5,7 +5,7 @@
     <div class="card-wrapper">
       <movieCard v-for="(topMovie,index) in topMovies" :key="index" :topMovie="topMovie"></movieCard>
     </div>
-    <div class="text-footer" v-if="!topMovies.length">暂时还未添加图书</div>
+    <div class="text-footer" v-if="!topMovies.length">暂时还未添加数据</div>
     <div class="text-footer" v-if="!more">没有更多数据</div>
   </div>
 </template>

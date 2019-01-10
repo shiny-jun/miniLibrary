@@ -28,17 +28,20 @@ export default {
   methods: {
     async getmovies(init) {
       wx.showNavigationBarLoading();
-      const searchMovie = await get("/weapp/searchmovie", { count: this.size, start: this.count, search: this.search });
-      if (searchMovie.length < this.size && Math.floor(this.count/this.size) > 0) {
-            this.more = false;
-          }
-          if (init) {
-            this.searchMovies = searchMovie;
-            wx.stopPullDownRefresh();
-          } else {
-            // 下拉刷新不能直接覆盖books而是累加
-            this.searchMovies = this.searchMovies.concat(searchMovie);
-          }
+      const res = await get("/weapp/searchmovie", { count: this.size, start: this.count, search: this.search });
+      if (
+        res.movies.subjects.length < this.size &&
+        Math.floor(this.count / this.size) > 0
+      ) {
+        this.more = false;
+      }
+      if (init) {
+        this.searchMovies = res.movies.subjects;
+        wx.stopPullDownRefresh();
+      } else {
+        // 下拉刷新不能直接覆盖books而是累加
+        this.searchMovies = this.searchMovies.concat(res.movies.subjects);
+      }
       wx.hideNavigationBarLoading();
     }
     // bookDetail(book){ // 图书详情

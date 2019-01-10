@@ -9,9 +9,8 @@ module.exports = async (ctx) => {
   let url = `https://api.douban.com/v2/movie/top250?start=${start}&count=${count}`
 
   const movies = await getJSON(url)
-
-  if(movies){
-      ctx.state.data = {
+  if(movies.title){
+    ctx.state.data = {
     movies,
     msg: 'success'
   }

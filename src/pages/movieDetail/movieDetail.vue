@@ -1,6 +1,6 @@
 <template>
   <div>
-    <movie-info :info="info"></movie-info>
+    <movie-info v-if="info.id" :info="info"></movie-info>
     <commentList :comments="comments"></commentList>
     <div class="comment" v-if="showAdd">
       <textarea v-model="comment" class="textarea" :maxlength="100" placeholder="请输入图书短评"></textarea>
@@ -56,6 +56,7 @@ export default {
   },
   mounted() {
     this.movieid = this.$root.$mp.query.id;
+    this.info = {} // 清空数据
     this.getDetail();
     this.getComments();
     const userinfo = wx.getStorageSync("userinfo");
@@ -71,7 +72,7 @@ export default {
         title: info.movie.title
       });
       this.info = info.movie;
-      console.log(this.info)      
+      console.log(this.info,2)      
     },
     getGeo(e) {
       // qG4loFFdoTinNKFLfT8YcTL7fvF7szUG
