@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="summary">
-      
+      <div class="title">电影简介</div>
       <p>{{info.summary}}</p>
     </div>
   </div>
@@ -150,6 +150,11 @@ export default {
   .summary {
     margin-top: 20rpx;
     padding: 0 30rpx;
+    .title{
+      font-size: 30rpx;
+      font-weight: bold;
+      padding: 10rpx 0;
+    }
     p {
       text-indent: 2em;
       font-size: 28rpx;
